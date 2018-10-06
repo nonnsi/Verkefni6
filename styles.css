@@ -16,11 +16,22 @@ html {
 main {
   margin: 0 auto;
   max-width: 1450px;
-  padding-left: 20px;
+  padding-left: 20px; 
   padding-right: 20px;
 }
 
+/* Border utan um hluti, muna að eyða í lokin. */
+h1, .text, .image, .cards{
+  border: 1px solid #000;
+}
+
 /* TODO taka ætti padding af main þegar komið er fyrir ofan hámarksbreidd */
+@media (min-width:1450px) {
+  main {
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
 
 h1 {
   text-align: center;
@@ -56,12 +67,30 @@ h1 {
 }
 
 /* TODO setja upp grid fyrir >= 1000px */
+@media (min-width:1000px){
+  .grid__row {
+    display: flex;
+    flex-direction: row;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .grid_col {
+    width: 50%;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
 
 /* TODO koma mynd fyrir á öðrum stað í < 1000px */
 
 /* grid fyrir cards */
 
 .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  /*background: #eee;*/
 }
 
 /* TODO útfæra grid fyrir cards */
@@ -69,8 +98,67 @@ h1 {
 /*
   .card kemur óbreytt úr sýnilausn á verkefni 5 fyrir utan responsive stíla og
   að það fær `height: 100%;`
-  Sýnilausn verður gefin út við lok dags miðvikudaginn 3. okt
 */
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 470px;
+  max-height: 300px;
+  overflow: hidden;
+
+  background-color: #fff;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+
+  font-size: 1.375em;
+  line-height: 1;
+  word-break: break-word;
+}
+
+.card__content {
+  display: flex;
+  flex: 1;
+}
+
+.card__text {
+  font-size: 1em;
+  line-height: 1.375;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.card__image {
+  padding-left: 20px;
+  flex: 0 0 150px;
+}
+
+.card__img {
+  max-width: 100%;
+}
+
+.card__tags {
+  margin-top: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  list-style: none;
+}
+
+.card__tag {
+  font-weight: bold;
+  margin-right: 10px;
+}
 
 /* TODO .card stílar úr v5 (eða sýnilausn...) */
 
